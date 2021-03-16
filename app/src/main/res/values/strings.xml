@@ -12,4 +12,6 @@
     <string name="account_title">Account</string>
     <string name="notifications_title">Notifications</string>
     <string name="settings_title">Settings</string>
+    <string name="master">Master</string>
+    <string name="detail">Detail</string>
 </resources>

@@ -1,4 +1,4 @@
-package eu.laramartin.master_detailsample
+package com.bravedroid.app
 
 import org.junit.Test
 

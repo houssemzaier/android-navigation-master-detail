@@ -1,4 +1,4 @@
-package eu.laramartin.master_detailsample
+package com.bravedroid.app
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("eu.laramartin.master_detailsample", appContext.packageName)
+        assertEquals("com.bravedroid.master_detailsample", appContext.packageName)
     }
 }

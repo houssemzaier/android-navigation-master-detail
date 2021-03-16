@@ -1,50 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/main_nav_graph.xml"
-            app:startDestination="@id/feed_fragment">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main_nav_graph.xml"
+        app:startDestination="@id/master_fragment">
 
     <fragment
-            android:id="@+id/feed_fragment"
-            android:name="eu.laramartin.master_detailsample.FeedFragment"
-            android:label="Feed"
-            tools:layout="@layout/fragment_feed"/>
-
-    <fragment
-            android:id="@+id/messages_fragment"
-            android:name="eu.laramartin.master_detailsample.MessagesFragment"
-            android:label="Messages"
-            tools:layout="@layout/fragment_messages"/>
-
-    <fragment
-            android:id="@+id/profile_fragment"
-            android:name="eu.laramartin.master_detailsample.ProfileFragment"
-            android:label="Profile"
-            tools:layout="@layout/fragment_profile">
-        <action android:id="@+id/action_profile_fragment_to_fragment_account"
-                app:destination="@id/fragment_account"/>
-        <action android:id="@+id/action_profile_fragment_to_fragment_notifications"
-                app:destination="@id/fragment_notifications"/>
-        <action android:id="@+id/action_profile_fragment_to_fragment_settings"
-                app:destination="@id/fragment_settings"/>
+            android:id="@+id/master_fragment"
+            android:name="com.bravedroid.app.MasterFragment"
+            android:label="@string/master"
+            tools:layout="@layout/fragment_master">
+        <action
+                android:id="@+id/action_master_fragment_to_fragment_detail"
+                app:destination="@id/fragment_detail" />
     </fragment>
 
     <fragment
-            android:id="@+id/fragment_account"
-            android:name="eu.laramartin.master_detailsample.AccountFragment"
-            android:label="@string/account"
-            tools:layout="@layout/fragment_account"/>
+            android:id="@+id/fragment_detail"
+            android:name="com.bravedroid.app.DetailFragment"
+            android:label="@string/detail"
+            tools:layout="@layout/fragment_detail" />
 
-    <fragment
-            android:id="@+id/fragment_notifications"
-            android:name="eu.laramartin.master_detailsample.NotificationsFragment"
-            android:label="@string/notifications"
-            tools:layout="@layout/fragment_notifications"/>
-
-    <fragment
-            android:id="@+id/fragment_settings"
-            android:name="eu.laramartin.master_detailsample.SettingsFragment"
-            android:label="@string/settings"
-            tools:layout="@layout/fragment_settings"/>
 </navigation>
