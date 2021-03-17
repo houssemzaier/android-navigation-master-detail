@@ -6,6 +6,7 @@ import com.bravedroid.app.di.RepositoryModule
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import timber.log.Timber
 import kotlin.coroutines.CoroutineContext
 
 class ItemApplication : Application() {
@@ -21,5 +22,6 @@ class ItemApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         appContext = this
+        Timber.plant(Timber.DebugTree())
     }
 }

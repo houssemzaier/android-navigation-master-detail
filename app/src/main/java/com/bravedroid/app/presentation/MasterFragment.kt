@@ -1,33 +1,24 @@
 package com.bravedroid.app.presentation
 
-
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import com.bravedroid.app.R
 import com.bravedroid.app.databinding.FragmentMasterBinding
 import com.bravedroid.app.databinding.FragmentMasterLandBinding
-import com.bravedroid.app.presentation.Util.requireItemApplication
 
-class MasterFragment : Fragment(), LifecycleObserver {
+class MasterFragment : Fragment() {
     private val isTablet: Boolean
         get() = requireContext().resources.getBoolean(R.bool.isTablet)
 
     private lateinit var binding: FragmentMasterBinding
     private lateinit var landBinding: FragmentMasterLandBinding
 
-    private lateinit var activityViewModel: MainActivityViewModel
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        requireActivity().lifecycle.addObserver(this)
+    private val activityViewModel: MainActivityViewModel by activityViewModels {
+        viewModelFactory()
     }
 
     override fun onCreateView(
@@ -58,7 +49,6 @@ class MasterFragment : Fragment(), LifecycleObserver {
         activityViewModel.items.observe(viewLifecycleOwner) {
             itemAdapter.submitList(it)
         }
-
     }
 
     private fun setupMasterDetailLayout() {
@@ -67,19 +57,5 @@ class MasterFragment : Fragment(), LifecycleObserver {
         activityViewModel.items.observe(viewLifecycleOwner) {
             itemAdapter.submitList(it)
         }
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    private fun onActivityCreated() {
-        injectViewModel()
-        requireActivity().lifecycle.removeObserver(this)
-    }
-
-    private fun injectViewModel() {
-        val factory: ViewModelProvider.Factory = ViewModelFactory(requireItemApplication())
-        activityViewModel = ViewModelProvider(
-            requireActivity(),
-            factory,
-        )[MainActivityViewModel::class.java]
     }
 }

@@ -2,6 +2,7 @@ package com.bravedroid.app.presentation
 
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -12,6 +13,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
+    private val activityViewModel: MainActivityViewModel by viewModels {
+        viewModelFactory()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -20,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+
         navController = findNavController(binding.mainContainer.id)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             val isFragmentDetailDestination = destination.id == R.id.fragment_detail
@@ -34,8 +40,7 @@ class MainActivity : AppCompatActivity() {
         if (item.itemId == android.R.id.home) {
             navController.popBackStack()
             true
-        }
-        else {
+        } else {
             super.onOptionsItemSelected(item)
         }
 }
