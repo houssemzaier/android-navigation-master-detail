@@ -1,10 +1,11 @@
-package com.bravedroid.app
+package com.bravedroid.app.presentation
 
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import com.bravedroid.app.R
 import com.bravedroid.app.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.bravedroid.app
+package com.bravedroid.app.presentation
 
 import android.content.Context
 import android.os.Bundle
@@ -10,7 +10,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModelProvider
+import com.bravedroid.app.application.ItemApplication
 import com.bravedroid.app.databinding.FragmentDetailBinding
+import com.bravedroid.app.presentation.Util.requireItemApplication
 
 class DetailFragment : Fragment(), LifecycleObserver {
     private lateinit var binding: FragmentDetailBinding
@@ -31,7 +33,7 @@ class DetailFragment : Fragment(), LifecycleObserver {
     override fun onStart() {
         super.onStart()
         activityViewModel.currentSelectedItem.observe(viewLifecycleOwner) {
-            binding.detailTextView.text =it
+            binding.detailTextView.text = it
         }
     }
 
@@ -42,7 +44,7 @@ class DetailFragment : Fragment(), LifecycleObserver {
     }
 
     private fun injectViewModel() {
-        val factory: ViewModelProvider.Factory = ViewModelFactory()
+        val factory: ViewModelProvider.Factory = ViewModelFactory(requireItemApplication())
         activityViewModel = ViewModelProvider(
             requireActivity(),
             factory,
